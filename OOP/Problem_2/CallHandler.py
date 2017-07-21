@@ -1,6 +1,4 @@
 #! /usr/bin/env python3
-from abc import ABCMeta, abstractmethod
-from random import random
 import Call
 import Respondent
 import Manager
@@ -21,19 +19,19 @@ class CallHandler():
         #adding the respondents here
         self.respondents = []
         for k in range(0, self.NUM_RESPONDENTS):
-            self.respondents.append(Respondent())
+            self.respondents.append(Respondent(self))
         self.employeeLevels.append(self.respondents)
 
         #adding the managers here
         self.managers = []
         for k in range(0, self.NUM_MANAGERS):
-            self.managers.append(Manager())
+            self.managers.append(Manager(self))
         self.employeeLevels.append(self.managers)
 
         #adding the director here
         self.directors = []
         for k in range(0, self.NUM_DIRECTORS):
-            self.directors.append(Director())
+            self.directors.append(Director(self))
         self.employeeLevels.append(self.directors)
 
     def getHandlerForCall(self, call):
@@ -51,7 +49,7 @@ class CallHandler():
         self.dispatchNewCall(call)
 
     def dispatchNewCall(self, call):
-        emp = getHandlerForCall(call)
+        emp = self.getHandlerForCall(call)
         if emp is not None:
             emp.receiveCall()
             call.setHandler(emp)
