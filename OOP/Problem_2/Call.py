@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
-import Rank
-import Caller
+from Rank import Rank
+from Caller import Caller
 
 class Call():
     """

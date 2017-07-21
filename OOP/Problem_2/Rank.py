@@ -9,7 +9,8 @@ class Rank(Enum):
     value = None #assigns value to rank instance
 
     def __init__(self, v):
-        self.value = v
+        # self.value = v
+        pass
 
     def getValue(self):
         return self.value

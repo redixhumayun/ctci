@@ -1,8 +1,8 @@
 #! /usr/bin/env python3
-import Call
-import Respondent
-import Manager
-import Director
+from Call import Call
+from Respondent import Respondent
+from Manager import Manager
+from Director import Director
 
 class CallHandler():
     """Class that will hold the main body of the function.

@@ -33,7 +33,7 @@ class Employee():
         self.assignNewCall()
 
     def assignNewCall(self):
-        if is not self.isFree():
+        if not self.isFree():
             return False
         else:
             return self.callHandler.assignCall()
