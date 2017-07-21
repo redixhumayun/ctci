@@ -7,7 +7,6 @@ class Call():
     A class representing a call from a customer
     """
     rank = None
-    caller = Caller("Zaid", 215126)
     handler = None
 
     def __init__(self, c):

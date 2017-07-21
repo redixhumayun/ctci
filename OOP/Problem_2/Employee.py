@@ -13,6 +13,7 @@ class Employee():
 
     def receiveCall(self, call):
         #Assigning a call to an employee here
+        print("receiving the call")
         self.currentCall = call
 
     def callCompleted(self):
@@ -38,8 +39,8 @@ class Employee():
         else:
             return self.callHandler.assignCall()
 
-    def isFree():
+    def isFree(self):
         return self.currentCall == None
 
-    def getRank():
+    def getRank(self):
         return self.rank

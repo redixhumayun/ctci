@@ -36,7 +36,7 @@ class CallHandler():
 
     def getHandlerForCall(self, call):
         level = call.getRank().getValue()
-        for l in range(level, LEVELS - 1):
+        for l in range(level, self.LEVELS - 1):
             employeeLevel = self.employeeLevels[l]
             for emp in employeeLevel:
                 if emp.isFree():
@@ -45,13 +45,13 @@ class CallHandler():
         return None
 
     def dispatchCall(self, caller):
-        call = Call()
+        call = Call(caller)
         self.dispatchNewCall(call)
 
     def dispatchNewCall(self, call):
         emp = self.getHandlerForCall(call)
         if emp is not None:
-            emp.receiveCall()
+            emp.receiveCall(call)
             call.setHandler(emp)
         else:
             call.reply("Please wait")
