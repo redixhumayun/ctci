@@ -65,8 +65,6 @@ class Puzzle():
             pieceToMatch = if col == 0 self.solution[row-1][0] else self.solution[row][col-1]
             orientationToMatch = if col == 0 Orientation.BOTTOM else Orientation.RIGHT
             edgeToMatch = pieceToMatch.getEdgeWithOrientation(orientationToMatch)
-            if edge is None:
-                return False
             #get opposite of the edge and check for a piece with that edge in
             #the correct orientation
 
