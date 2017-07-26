@@ -10,7 +10,8 @@ def RecursiveMul(a, b):
     if a == 0 or b == 0:
         return 0
     if a == 1 or b == 1:
-        return multiply(a, b)
+        # return multiply(a, b)
+        return max(a, b)
     else:
         if a >= b:
             result += RecursiveMul(a - 1, b) + RecursiveMul(1, b)
