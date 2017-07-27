@@ -28,5 +28,5 @@ def multiply(a, b):
     return sum_result
 
 if __name__ == "__main__":
-    result = RecursiveMul(4, 5)
+    result = RecursiveMul(10, 12)
     print(result)
