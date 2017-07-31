@@ -6,6 +6,7 @@ def Permutation(string):
     A function that will create permutations of a string
     Return type: None
     '''
+    # pdb.set_trace()
     #base case for recursion
     if len(string) == 1:
         return string
