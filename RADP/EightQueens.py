@@ -28,18 +28,18 @@ def checkValid(board, row, col):
     #col will be column of first empty cell in row
 
     #Need to find location of queen in next row
+    #queenLocation will be column number
     queenLocation = findQueenInNextRow(board, row+1)
     colDistance = abs(queenLocation - col)
     if colDistance == 1:
         return False
-
     return True
 
 def findQueenInNextRow(board, row):
     #check this whole row for the queen
     for col in range(0, 8, 1):
         if board[row][col] != 0:
-            return board[row][col]
+            return col
 
 
 
