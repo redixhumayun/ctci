@@ -11,6 +11,7 @@ class BT():
         return self.size
 
     def add(self, key, node):
+        # p.set_trace()
         if node is None:
             node = self.root
 
@@ -19,7 +20,7 @@ class BT():
             return
 
         else:
-            if key < node.value:
+            if key <= node.value:
                 if node.leftChild is None:
                     node.leftChild = TreeNode(key)
                     return
@@ -43,6 +44,7 @@ class BT():
         return foundNode
 
     def print_tree(self, root):
+        # p.set_trace()
         if root:
             self.print_tree(root.leftChild)
             print(root.value)
@@ -105,11 +107,11 @@ class TreeNode():
 
 if __name__ == "__main__":
     # arr = [4,6,7,8,5,9,2,1,3]
-    arr = [6,4,9,2,5,1,3,9,7,10,8]
+    arr = [1,2,4,5,6,7]
     bt = BT()
     for index, num in enumerate(arr):
         bt.add(num, None)
     nodeToFind = bt.getNode(9, bt.root)
     mainNode = bt.getNode(1, bt.root)
-    # print(bt.root.leftChild.leftChild.value)
-    bt.recurseTree(bt.root)
+    # bt.print_tree(bt.root)
+    print(bt.root.rightChild.value)
