@@ -12,29 +12,22 @@ class BT():
 
         if self.root is None:
             self.root = TreeNode(key)
-            return self.root
+            return
 
         if key <= node.value:
             if node.left is None:
                 node.left = TreeNode(key)
-                return node.left
+                return
             else:
-                return self.add(key, node.left)
+                self.add(key, node.left)
+            node.left_size += 1
 
         else:
             if node.right is None:
                 node.right = TreeNode(key)
-                return node.right
+                return
             else:
-                return self.add(key, node.right)
-
-
-    def getRankOfNumber(self, x, root):
-        # pdb.set_trace()
-        if root is None or root.value == x:
-            return 0
-        #add one to some counter
-        return 1 + self.getRankOfNumber(x, root.left) + self.getRankOfNumber(x, root.right)
+                self.add(key, node.right)
 
 
     def __repr__(self):
@@ -46,12 +39,30 @@ class TreeNode():
         self.left = left
         self.right = right
         self._track = None
+        self.left_size = 0
 
     def insertLeftChild(self, value):
         self.left = value
 
     def insertRightChild(self, value):
         self.right = value
+
+    #this method needs to be called on the root initially
+    def getRankOfNode(self, v): #v needs to be value we are looking for
+        # pdb.set_trace()
+        if self.value == v:
+            return self.left_size
+        elif v < self.value:
+            if self.left is None:
+                return -1
+            else:
+                self.left.getRankOfNode(v)
+        else:
+            if self.right is None:
+                return -1
+            else:
+                return self.left_size + 1 + self.right.getRankOfNode(v)
+
 
     @property
     def track(self):
@@ -77,6 +88,6 @@ if __name__ == "__main__":
     bt = BT()
     stream = Stream()
     for number in stream:
-        node = bt.add(number, None)
-        rank = bt.getRankOfNumber(number, bt.root)
-        node.track = rank
+        bt.add(number, None)
+    result = bt.root.getRankOfNode(9)
+    print(result)
