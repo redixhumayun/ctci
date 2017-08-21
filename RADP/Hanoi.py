@@ -23,23 +23,15 @@ class Stack():
 def Hanoi(num, stackSrc, stackDest, stackTemp):
     if num == 1:
         disk = stackSrc.popElem() #get last element from stack
-
-        print("Moving " + str(num) + " from ", end="")
-        print(stackSrc, end="")
-        print(" to ", end="")
-        print(stackDest)
+        print("Moving %i from %s to %s" % (num, stackSrc, stackDest))
 
         stackDest.add(num)
     else:
         Hanoi(num - 1, stackSrc, stackTemp, stackDest)
+
         #moving disk from src to dest
         disk = stackSrc.popElem()
-
-        print("Moving " + str(num) + " from ", end="")
-        print(stackSrc, end="")
-        print(" to ", end="")
-        print(stackDest)
-        
+        print("Moving %i from %s to %s" % (num, stackSrc, stackDest))
         stackDest.add(disk)
         #end of moving from src to dest
         Hanoi(num - 1, stackTemp, stackDest, stackSrc)
