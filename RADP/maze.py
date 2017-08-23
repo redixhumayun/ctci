@@ -17,7 +17,7 @@ class MazeSolution():
             return False
         if self.outOfBounds(row, col):
             return False
-        if self.isDeadEnd(row, cell):
+        if self.isDeadEnd(row, col):
             return False
         if self.foundExit(row, col):
             return True
@@ -35,6 +35,7 @@ class MazeSolution():
             self.maze[row][col] = "Path"
         else:
             self.maze[row][col] = "D"
+        return found
 
     def isDeadEnd(self, row, col):
         if self.maze[row][col] == "D":
@@ -99,6 +100,12 @@ class TestMazeSolution(unittest.TestCase):
     def test_foundExit(self):
         result = self.mazeClass.foundExit(1, 10)
         self.assertEqual(result, True)
+
+    def test_solution(self):
+        row, col = self.startPosition
+        result = self.mazeClass.searchFrom(row, col)
+        print(self.mazeClass.maze)
+        print(result)
 
 if __name__ == "__main__":
     unittest.main()
