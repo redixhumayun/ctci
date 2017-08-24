@@ -20,6 +20,7 @@ class MazeSolution():
         if self.isDeadEnd(row, col):
             return False
         if self.foundExit(row, col):
+            self.maze[row][col] = 'P';
             return True
         self.maze[row][col] = '1'
 
@@ -31,10 +32,6 @@ class MazeSolution():
         found = self.searchFrom(row, col-1)
         #go east here
         found = self.searchFrom(row, col+1)
-        if found:
-            self.maze[row][col] = "Path"
-        else:
-            self.maze[row][col] = "D"
         return found
 
     def isDeadEnd(self, row, col):
@@ -82,7 +79,7 @@ class TestMazeSolution(unittest.TestCase):
          ['+',' ',' ',' ',' ',' ','+',' ','+','+','+'],
          ['+','+','+','+','+','+','+',' ','+','+','+']]
 
-        self.startPosition = (5, 6)
+        self.startPosition = (3,1)
         self.mazeClass = MazeSolution(self.maze, self.startPosition)
 
     def test_initilization(self):
@@ -104,7 +101,8 @@ class TestMazeSolution(unittest.TestCase):
     def test_solution(self):
         row, col = self.startPosition
         result = self.mazeClass.searchFrom(row, col)
-        print(self.mazeClass.maze)
+        for row in self.mazeClass.maze:
+            print(row)
         print(result)
 
 if __name__ == "__main__":

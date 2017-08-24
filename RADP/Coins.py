@@ -6,7 +6,7 @@ def Coins(amt, cache):
     '''
     # pdb.set_trace()
 
-    arr = [25, 10, 5, 1] #quarter, dime, nickel, penny
+    arr = [25, 10, 5, 1] #quarter, dime, nickel, penny. Need to stop reinitializing this every call
     result = 0
 
     if amt < 0:
@@ -14,6 +14,7 @@ def Coins(amt, cache):
 
     if cache[amt] != 0:
         return cache[amt]
+
     if amt == 0:
         return 1 #base case
 
